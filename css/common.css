@@ -32,8 +32,11 @@
     position: relative;
     z-index: 1;
 }
-.layui-nav-bar{
+.layui-bg-blue .layui-nav-bar{
     top: 55px!important;
+}
+.layui-layout-right .layui-nav-bar{
+    display: none!important;
 }
 .layui-bg-blue .layui-nav-bar, .layui-bg-blue .layui-nav-itemed:after, .layui-bg-blue .layui-this:after{
     background-color:RGBA(30, 143, 198, 1);
