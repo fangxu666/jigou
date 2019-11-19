@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title></title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1492202_clme2d1qb5j.css">
+    <link rel="stylesheet" href="css/layui.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <style type="text/css">
+        .layui-layout-body{
+            overflow-y: auto;
+            background: #E6E6E6;
+        }
+        .layui-tab-title{
+            background: #fff;
+        }
+        .layui-tab{
+            margin: 0;
+        }
+       .layer-mr i{
+           display: none!important;
+       }
+    </style>
+</head>
+<body class="layui-layout-body">
+<!--header-->
+    <div class="layui-header">
+        <ul class="layui-nav layui-layout-left">
+            <li>
+                <a href="javascript:void(0);">
+                    <img src="images/logo.png" alt="">
+                    时代新媒体出版社 | <i>教学素材出版管理系统</i>
+                </a>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:void(0);">
+                    <img src="images/tx.png" alt="">
+                    <cite id="cite_name" style="color: #fff">产品研发</cite>
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:void(0);">
+                    <i class="iconfont icontuichu"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+<!--/header-->
+<!--nav-->
+    <ul class="layui-nav layui-bg-blue" lay-filter="demo" lay-allowclose="true" style="padding:0 152px;">
+        <li class="layui-nav-item layui-this"><a data-url="page/resource" data-id="11" data-title="资源入库"  data-type="tabAdd" href="#" class="site-demo-active">资源入库</a></li>
+        <li class="layui-nav-item"><a data-url="page/resourceJg" data-id="22" data-title="资源加工"  data-type="tabAdd" href="#" class="site-demo-active">资源加工</a></li>
+        <li class="layui-nav-item"><a data-url="page/resourceApply" data-id="33" href="#" class="site-demo-active" data-title="应用资源"  data-type="tabAdd">应用资源</a></li>
+    </ul>
+<!--/nav-->
+<!--tab-->
+    <div class="layui-tab table-nav" lay-allowclose="true" lay-filter="demo">
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <iframe data-frameid="11" scrolling="auto" frameborder="0" src="page/resource.html" style="width: 100%;"></iframe>
+            </div>
+        </div>
+    </div>
+<!--/tab-->
+<script src="layui.all.js" charset="utf-8"></script>
+<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script>
+    layui.use(['jquery', 'layer'], function(){
+        var $ = layui.jquery //重点处
+            ,form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,element = layui.element
+            ,table = layui.table  //表格，注意此处table必须是全局变量
+            ,laydate = layui.laydate;
+        //日期选择
+        laydate.render({
+            elem: '#date1'
+        });
+        //监听导航点击
+        //监听导航点击
+        element.on('nav(demo)', function(elem){
+            $("iframe").attr("src",elem[0].dataset.url+".html");
+        });
+        FrameWH()
+        function FrameWH() {
+            var h = $(window).height() -158;
+            $("iframe").css("height",h+"px");
+        }
+        $(window).resize(function () {
+            FrameWH();
+        })
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资源入库</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1492202_ne7g262sz6.css">
+    <link rel="stylesheet" href="../css/layui.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        .table-content{
+            padding: 0 50px;
+        }
+        .layui-form-item{
+            margin-bottom: 0px;
+        }
+        .dFlex{
+            display: flex;
+        }
+        .dFlex .flexOne{
+            flex: 1;
+        }
+        .dFlex .flexOne .layui-input-inline{
+            margin-bottom: 12px;
+        }
+        .search-div{
+            position: relative;
+            background: #fff;
+            padding: 8px;
+        }
+        .tableDiv{
+            background: #fff;
+            padding: 0 8px;
+        }
+        .search-btn{
+            text-align: center;
+            position: absolute;
+            width: 25%;
+            bottom: 8px;
+            right: 0;
+        }
+        .table-cz-btn{
+            margin: 0 3px;
+        }
+        .iconarrow-double-up-class i,.iconarrow-double-down i{
+            font-size: 20px;
+            color: #999;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+        .iconarrow-double-down-class{
+            display: none;
+        }
+        .layui-table-view,.layui-table{
+            margin: 0;
+        }
+        .cz-btn{
+            text-align: left;
+            margin-top: 10px;
+            background: #fff;
+            padding: 6px 10px;
+        }
+        .cz-btn button.layui-btn{
+            height: 30px;
+            line-height: 30px;
+            padding: 0 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-tab-item layui-show">
+    <div class="table-content ">
+        <form class="layui-form layui-row" action="">
+        <div class="search-div layui-row">
+            <div class="layui-col-md9 layui-col-space10">
+                    <div class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">资源名称</label>
+                            <div class="layui-input-block">
+                                <input type="text" size="small" name="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">资料格式</label>
+                            <div class="layui-input-block">
+                                <select name="interest" lay-filter="format">
+                                    <option value=""></option>
+                                    <option value="0">格式1</option>
+                                    <option value="1" selected="">格式2</option>
+                                    <option value="2">格式3</option>
+                                    <option value="3">格式4</option>
+                                    <option value="4">格式5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">资料分类</label>
+                            <div class="layui-input-block">
+                                <select name="interest" lay-filter="type">
+                                    <option value=""></option>
+                                    <option value="0">分类1</option>
+                                    <option value="1" selected="">分类2</option>
+                                    <option value="2">分类3</option>
+                                    <option value="3">分类4</option>
+                                    <option value="4">分类5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-space10 clearfix form-hide">
+                        <div class="layui-col-md4">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">入库人</label>
+                                <div class="layui-input-block">
+                                    <select name="interest" lay-filter="agent">
+                                        <option value=""></option>
+                                        <option value="0">入库人1</option>
+                                        <option value="1" selected="">入库人2</option>
+                                        <option value="2">入库人3</option>
+                                        <option value="3">入库人4</option>
+                                        <option value="4">入库人5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">入库时间</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="date" placeholder="请选择上架时间" id="date1" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">转换状态</label>
+                                <div class="layui-input-block">
+                                    <select name="interest" lay-filter="examineState">
+                                        <option value=""></option>
+                                        <option value="0">状态1</option>
+                                        <option value="1" selected="">状态2</option>
+                                        <option value="2">状态3</option>
+                                        <option value="3">状态4</option>
+                                        <option value="4">状态5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="search-btn layui-col-md3">
+                <a href="javascript:void(0);" class="iconarrow-double-up-class"><i class="iconfont iconarrow-double-up"></i></a>
+                <a href="javascript:void(0);" class="iconarrow-double-down-class"><i class="iconfont iconarrow-double-down"></i></a>
+                <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="demo1">查询</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+        </form>
+        <div class="tableDiv">
+            <div class="cz-btn">
+                <button type="button" class="layui-btn layui-btn-normal">资源入库</button>
+                <button type="button" class="layui-btn layui-btn-primary">入库监控</button>
+                <button type="button" class="layui-btn layui-btn-primary" id="sc-btn">删除</button>
+                <button type="button" class="layui-btn layui-btn-primary" id="zh-btn">转换</button>
+            </div>
+            <table id="layui-table" lay-filter="tableBox"  class="layui-table"></table>
+        </div>
+    </div>
+</div>
+<script src="../layui.all.js" charset="utf-8"></script>
+<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script type="text/html" id="barDemo">
+    <a class="table-cz-btn" lay-event="select">
+        <i class="iconfont iconshangchuan" title="上传" style="color: #51B4E4;font-size: 18px;vertical-align: middle"></i>
+    </a>
+    <a class="table-cz-btn" lay-event="select" onclick="toDetail()">
+        <i class="iconfont iconxiangqing" title="详情" style="color: #51B4E4;font-size: 18px;vertical-align: middle"></i>
+    </a>
+    <a class="table-cz-btn" lay-event="select">
+        <i class="iconfont iconyulan" title="预览" style="color: #51B4E4;font-size: 18px;vertical-align: middle"></i>
+    </a>
+</script>
+<script>
+    layui.use(['jquery', 'layer'], function(){
+        var $ = layui.jquery //重点处
+            ,form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,element = layui.element
+            ,table = layui.table  //表格，注意此处table必须是全局变量
+            ,laydate = layui.laydate;
+        //日期选择
+        laydate.render({
+            elem: '#date1'
+            ,range:true
+        });
+        //表格参数
+        var arr = [[
+            {type:'checkbox'}
+            ,{field: 'id', title: '序号',width:60}
+            ,{field: 'name', title: '资源名称'}
+            ,{field: 'status3', title: '资源分类'}
+            ,{field: 'ylwl', title: '资源格式'}
+            ,{field: 'ssyy', title: '资源大小'}
+            ,{field: 'ssyy', title: '入库人'}
+            ,{field: 'time', title: '入库时间'}
+            ,{field: 'ssyy', title: '转换状态'}
+            ,{fixed: 'right', title:'操作', width:150, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
+        ]];
+        var limitArr =[10,20,30];
+        var urls = '../tableJson.js';
+        com.tableRender('#layui-table','tableId','full-53',limitArr,urls,arr);//加载表格,注意tableId是自定义的，在表格重载需要！！
+        getHeight()
+
+        //复选方法监听    自定义数组
+        var ids = null;
+        var flag = true
+        table.on('checkbox(tableBox)', function(obj){
+            if (flag){
+                ids = $(".layui-laypage-limits").find("option:selected").val()
+                flag = false
+            }
+            if(obj.checked==true){
+                if(obj.type=='all'){
+                    ids = $(".layui-laypage-limits").find("option:selected").val()
+                    $("#zh-btn").text("批量转换")
+                    $("#sc-btn").text("批量删除")
+                }else{
+                    if (ids <= 0){
+                        $("#zh-btn").text("转换")
+                        $("#sc-btn").text("删除")
+                    } else{
+                        $("#zh-btn").text("批量转换")
+                        $("#sc-btn").text("批量删除")
+                    }
+                    ids++
+                }
+            }else{
+                if(obj.type=='all'){
+                    ids = 0
+                    $("#zh-btn").text("转换")
+                    $("#sc-btn").text("删除")
+                }else{
+                    ids--
+                    console.log(ids)
+                    if (ids >= 2){
+                        $("#zh-btn").text("批量转换")
+                        $("#sc-btn").text("批量删除")
+                    } else {
+                        $("#zh-btn").text("转换")
+                        $("#sc-btn").text("删除")
+                    }
+
+                }
+            }
+        });
+        //伸缩箭头
+        $("body").on("click",'.iconarrow-double-up-class',function () {
+            $(".form-hide").hide()
+            $(this).hide()
+            $(".iconarrow-double-down-class").show()
+            getHeight()
+        })
+        $("body").on("click",'.iconarrow-double-down-class',function () {
+            $(".form-hide").show()
+            $(this).hide()
+            $(".iconarrow-double-up-class").show()
+            getHeight()
+        })
+        $(window).resize(function () {
+            getHeight()
+        })
+    });
+    function toDetail(){
+        com.openMore("详情","./page/detail/detail.html",['80%', '80%'],"tableId");
+    }
+    //页面高度适配
+    function getHeight() {
+        $(".tableDiv .layui-table-view").height($(window).height()-72-$(".search-div").height());//表格高度
+        $(".tableDiv .layui-table-view .layui-table-box").height($(window).height()-114-$(".search-div").height());//表格高度
+        $(".tableDiv .layui-table-view .layui-table-body").height($(window).height()-150-$(".search-div").height());//表格高度
+    }
+</script>
+</body>
+</html>
