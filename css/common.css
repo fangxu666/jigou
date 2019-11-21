@@ -25,7 +25,11 @@
 }
 .layui-layout-left a i{
     font-style: normal;
-    font-weight: normal;
+    font-size: 22px;
+    color: #fff;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-left: 10px;
 }
 .layui-nav .layui-nav-item a{
     color: #fff!important;
@@ -53,7 +57,7 @@
 }
 .layui-layout-left a img{
     vertical-align: middle;
-    height: 44px;
+    height: 58px;
     margin-bottom: 4px;
     margin-right: 10px;
 }
