@@ -314,8 +314,6 @@
         var limitArr =[10,20,30];
         var urls = '../tableJson.js';
         com.tableRender('#layui-table','tableId','full-53',limitArr,urls,arr);//加载表格,注意tableId是自定义的，在表格重载需要！！
-        getHeight()
-
         //复选方法监听    自定义数组
         var ids = null;
         var flag = true
@@ -358,6 +356,7 @@
                 }
             }
         });
+        getHeight()
         //标引
         $("#by-btn").click(function(){
             var checkStatus = table.checkStatus('tableId');
